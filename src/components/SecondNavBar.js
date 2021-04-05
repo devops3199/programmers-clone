@@ -1,7 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 
-const Main = (props) => {
+const SecondNavBar = (props) => {
+
+  return (
+   <Challenges_tab>
+     <Challenges_tab_ul>
+       <Challenges_tab_li><a href="/" id="MouseEvent">코딩테스트 고득점 Kit</a></Challenges_tab_li>
+       <Challenges_tab_li><a href="/" id="MouseEvent">SQL 고득점 Kit</a></Challenges_tab_li>
+       <Challenges_tab_li><a href="/" id="MouseEvent">모든 문제</a></Challenges_tab_li>
+     </Challenges_tab_ul>
+   </Challenges_tab>
+  );
+};
 
 const Challenges_tab= styled.div`
   position: sticky;
@@ -50,18 +61,4 @@ const Challenges_tab_li=styled.li`
   }
 `;
 
-
-  return (
-    
-   <Challenges_tab>
-     <Challenges_tab_ul>
-       <Challenges_tab_li><a href="/" id="MouseEvent">코딩테스트 고득점 Kit</a></Challenges_tab_li>
-       <Challenges_tab_li><a href="/" id="MouseEvent">SQL 고득점 Kit</a></Challenges_tab_li>
-       <Challenges_tab_li><a href="/" id="MouseEvent">모든 문제</a></Challenges_tab_li>
-     </Challenges_tab_ul>
-   </Challenges_tab>
-  );
-}
-
-
-export default Main;
+export default SecondNavBar;
