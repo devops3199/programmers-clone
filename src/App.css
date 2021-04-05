@@ -2,5 +2,8 @@
 
 body {
   font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #263747;
 }
 
