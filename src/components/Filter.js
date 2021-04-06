@@ -3,21 +3,36 @@ import styled from 'styled-components';
 import { Down } from '../media/svg/SvgIcon';
 
 const Filter = (props) => {
-
+    const filter_box = React.useRef();
+    const [tog, setTog] = React.useState(true);
     const { is_first, category, list } = props;
 
-    console.log(props.is_first);
+    const Toggle = () => {
+        let height = filter_box.current.scrollHeight;
+
+        if(tog){
+            //filter_box.current.style.visibility = 'hidden';
+            filter_box.current.style.height = '0';
+            //down_svg.current.style.transform = 'rotate(180deg)';
+            setTog(false);
+        } else {
+            //filter_box.current.style.visibility = 'visible';
+            filter_box.current.style.height = `${height}px`;
+            //down_svg.current.style.transform = 'rotate(-180deg)';
+            setTog(true);
+        }
+    };
 
     if(is_first) {
         return (
             <FilterContainer>
-                <FilterFirstHeader>
-                    <HeaderTitle>
+                <div>
+                    <HeaderTitle onClick={Toggle}>
                         <span>{category}</span>
-                        <Down/>
+                        <Down className='down_svg' />
                     </HeaderTitle>
-                </FilterFirstHeader>
-                <FilterList>
+                </div>
+                <FilterList ref={filter_box}>
                     {list.map((val, index) => {
                         return (
                             <List key={index}>
@@ -36,12 +51,12 @@ const Filter = (props) => {
     return(
         <FilterContainer>
             <FilterHeader>
-                <HeaderTitle>
+                <HeaderTitle onClick={Toggle}>
                     <span>{category}</span>
-                    <Down/>
+                    <Down className='down_svg' />
                 </HeaderTitle>
             </FilterHeader>
-            <FilterList>
+            <FilterList ref={filter_box}>
                 {list.map((val, index) => {
                     return (
                         <List key={index}>
@@ -65,10 +80,6 @@ Filter.defaultProps = {
 
 const FilterContainer = styled.div`
     box-size: border-box;
-`;
-
-const FilterFirstHeader = styled.div`
-
 `;
 
 const FilterHeader = styled.div`
@@ -105,6 +116,7 @@ const HeaderTitle = styled.a`
         fill: #263747;
         width: 1.5rem;
         height: 1.5rem;
+        transition: transform .2s;
     }
 `;
 
@@ -113,6 +125,9 @@ const FilterList = styled.ul`
     margin: 0;
     padding: 0;
     list-style: none;
+    height: 150px;
+    visibility: visible;
+    transition: height .3s ease-out;
 `;
 
 const List = styled.li`
