@@ -74,7 +74,7 @@ const NavbarGlobalUl = styled.ul`
   //flex-basis: 100%;
   flex-grow: 1;
   align-items: center;
-
+  list-style: none;
   transform: translateX(calc(-50% + 40rem));
   left: calc(50% - 40rem);
   position: absolute; 

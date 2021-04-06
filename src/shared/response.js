@@ -1,6 +1,6 @@
 export const Banner = {
-    "ok" : true,
-    "result" : [
+    ok : true,
+    result : [
       { "image" : "https://grepp-programmers.s3.amazonaws.com/image/origin/production/banner/103631/b623de40-25ec-412b-9969-52455a3b0ec2.png", 
                   "link": "https://programmers.co.kr/pages/2021_edu_event_review?utm_source=programmers&utm_medium=banner&utm_campaign=review_event&utm_content=feb_review",
                    "id" : 1, },
@@ -20,4 +20,166 @@ export const Banner = {
                   "link": "https://programmers.co.kr/learn/courses/11710?utm_source=programmers&utm_medium=banner&utm_campaign=learn&utm_content=course11710",
                   "id" : 6, },
     ]
+};
+
+export const AlgorithmLists = {
+  ok: true,
+  result: [
+    {
+      problem_id : 1,
+      problem_name : "기능개발",
+      problem_reference : "스택/큐",
+      problem_solved : 19902,
+      language : ["C++", "C#", "Go", "Java", "JavaScript", "Kotlin", "Python2", "Python3", "Ruby", "Scala", "Swift"],
+    },
+    {
+      problem_id : 2,
+      problem_name : "모든 레코드 조회하기",
+      problem_reference : "SELECT",
+      problem_solved : 27155,
+      language : ["MySQL", "Oracle"],
+    },
+    {
+      problem_id : 1,
+      problem_name : "기능개발",
+      problem_reference : "스택/큐",
+      problem_solved : 19902,
+      language : ["C++", "C#", "Go", "Java", "JavaScript", "Kotlin", "Python2", "Python3", "Ruby", "Scala", "Swift"],
+    },
+    {
+      problem_id : 2,
+      problem_name : "모든 레코드 조회하기",
+      problem_reference : "SELECT",
+      problem_solved : 27155,
+      language : ["MySQL", "Oracle"],
+    },
+    {
+      problem_id : 1,
+      problem_name : "기능개발",
+      problem_reference : "스택/큐",
+      problem_solved : 19902,
+      language : ["C++", "C#", "Go", "Java", "JavaScript", "Kotlin", "Python2", "Python3", "Ruby", "Scala", "Swift"],
+    },
+    {
+      problem_id : 2,
+      problem_name : "모든 레코드 조회하기",
+      problem_reference : "SELECT",
+      problem_solved : 27155,
+      language : ["MySQL", "Oracle"],
+    },
+    {
+      problem_id : 1,
+      problem_name : "기능개발",
+      problem_reference : "스택/큐",
+      problem_solved : 19902,
+      language : ["C++", "C#", "Go", "Java", "JavaScript", "Kotlin", "Python2", "Python3", "Ruby", "Scala", "Swift"],
+    },
+    {
+      problem_id : 2,
+      problem_name : "모든 레코드 조회하기",
+      problem_reference : "SELECT",
+      problem_solved : 27155,
+      language : ["MySQL", "Oracle"],
+    },
+    {
+      problem_id : 1,
+      problem_name : "기능개발",
+      problem_reference : "스택/큐",
+      problem_solved : 19902,
+      language : ["C++", "C#", "Go", "Java", "JavaScript", "Kotlin", "Python2", "Python3", "Ruby", "Scala", "Swift"],
+    },
+    {
+      problem_id : 2,
+      problem_name : "모든 레코드 조회하기",
+      problem_reference : "SELECT",
+      problem_solved : 27155,
+      language : ["MySQL", "Oracle"],
+    },
+    {
+      problem_id : 1,
+      problem_name : "기능개발",
+      problem_reference : "스택/큐",
+      problem_solved : 19902,
+      language : ["C++", "C#", "Go", "Java", "JavaScript", "Kotlin", "Python2", "Python3", "Ruby", "Scala", "Swift"],
+    },
+    {
+      problem_id : 2,
+      problem_name : "모든 레코드 조회하기",
+      problem_reference : "SELECT",
+      problem_solved : 27155,
+      language : ["MySQL", "Oracle"],
+    },
+    {
+      problem_id : 1,
+      problem_name : "기능개발",
+      problem_reference : "스택/큐",
+      problem_solved : 19902,
+      language : ["C++", "C#", "Go", "Java", "JavaScript", "Kotlin", "Python2", "Python3", "Ruby", "Scala", "Swift"],
+    },
+    {
+      problem_id : 2,
+      problem_name : "모든 레코드 조회하기",
+      problem_reference : "SELECT",
+      problem_solved : 27155,
+      language : ["MySQL", "Oracle"],
+    },
+    {
+      problem_id : 1,
+      problem_name : "기능개발",
+      problem_reference : "스택/큐",
+      problem_solved : 19902,
+      language : ["C++", "C#", "Go", "Java", "JavaScript", "Kotlin", "Python2", "Python3", "Ruby", "Scala", "Swift"],
+    },
+    {
+      problem_id : 2,
+      problem_name : "모든 레코드 조회하기",
+      problem_reference : "SELECT",
+      problem_solved : 27155,
+      language : ["MySQL", "Oracle"],
+    },
+  ],
+};
+
+export const Level = {
+  ok: true,
+  result: ["Level 1", "Level 2", "Level 3", "Level 4", "Level 5"],
+};
+
+export const Language = {
+  ok: true,
+  result: [
+    "C",
+    "C++",
+    "C#",
+    "Go",
+    "Java",
+    "JavaScript",
+    "Kotlin",
+    "Python2",
+    "Python3",
+    "Ruby",
+    "Scala",
+    "Swift",
+    "MySQL",
+    "Oracle",
+  ],
+};
+
+export const Reference = {
+  ok: true,
+  result: [
+    "2021 KAKAO BLIND RECRUITMENT",
+    "2020 KAKAO BLIND RECRUITMENT",
+    "2019 KAKAO BLIND RECRUITMENT",
+    "2018 KAKAO BLIND RECRUITMENT",
+    "2019 카카오 개발자 겨울 인턴십",
+    "2020 카카오 인턴십",
+    "2017 카카오 예선",
+    "2017 카카오코드 본선",
+    "Summer/Winter Coding(~2018)",
+    "Summer/Winter Coding(2019)",
+    "월간 코드 챌린지 시즌 1",
+    "찾아라 프로그래밍 마에스터",
+    "2017 팁스타운",
+  ],
 };

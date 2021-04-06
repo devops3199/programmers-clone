@@ -1,28 +1,32 @@
+import React from 'react';
 import styled from 'styled-components';
-import { Mysql, Oracle } from '../media/svg/SvgIcon';
+import Svg from './Svg';
+import { Previous, Next, Down, Mysql, Oracle, CLang, CPlusPlus, CSharp, GoLang, Java, JavaScript, Kotlin, Python2, Python3, Ruby, Scala, Swift } from '../media/svg/SvgIcon';
 
-const AlgorithmList = (props) => {
+const Algorithm = (props) => {
+
+    const { problem_name, problem_reference, problem_solved, language } = props.list;
+
     return (
         <ColItem>
             <ItemContent>
                 <ItemTitleBox>
-                    <ItemTitle>크레인 인형뽑기 게임</ItemTitle>
+                    <ItemTitle>{problem_name}</ItemTitle>
                     <ItemSubTitleBox>
-                        <span>2019 카카오 개발자 겨울 인턴쉽</span>
-                        <span>15167명 완료</span>
+                        <span>{problem_reference}</span>
+                        <span>{problem_solved}명 완료</span>
                     </ItemSubTitleBox>
                 </ItemTitleBox>
                 <LangBox>
-                    <IconBox>
-                        <IconLink>
-                            <Mysql/>
-                        </IconLink>
-                    </IconBox>
-                    <IconBox>
-                        <IconLink>
-                            <Oracle/>
-                        </IconLink>
-                    </IconBox>
+                    {language.map((val, index) => {
+                        return (
+                            <IconBox key={index}>
+                                <IconLink>
+                                    <Svg val={val}/>
+                                </IconLink>
+                            </IconBox>
+                        );
+                    })}
                 </LangBox>
             </ItemContent>
         </ColItem>
@@ -76,6 +80,10 @@ const ItemTitle = styled.span`
     line-height: 1.6;
     letter-spacing: -0.009em;
     font-weight: 700;
+
+    :hover{
+        color: #0078FF;
+    }
 `;
 
 const ItemSubTitleBox = styled.div`
@@ -104,6 +112,7 @@ const LangBox = styled.div`
 const IconBox = styled.div`
     display: inline-block;
     vertical-align: top;
+    cursor: pointer;
 `;
 
 const IconLink = styled.a`
@@ -121,4 +130,4 @@ const IconLink = styled.a`
     }
 `;
 
-export default AlgorithmList;
+export default Algorithm;

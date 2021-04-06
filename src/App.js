@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 import NavBar from './components/NavBar';
 import SecondNavBar from './components/SecondNavBar';
 import Carousel from './components/Carousel';
-import Problems from './pages/Problems';
+import Challenge from './pages/Challenge';
 import styled from 'styled-components';
 import Footer from './components/Footer';
 
@@ -16,7 +16,7 @@ const App = (props) => {
     <Main>
       <SecondNavBar />
       <Carousel />
-      <Problems />
+      <Challenge />
     </Main>
     <Footer/>
     </>
