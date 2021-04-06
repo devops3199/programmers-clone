@@ -19,11 +19,12 @@ const Challenges_tab= styled.div`
   top: 0;
   z-index: 2;
   background-color: white;
+
 `;
 
 const Challenges_tab_ul=styled.ul`
   border-bottom: 0;
-  //height:41px;
+  height:41.333px;
   box-shadow: inset 0 -0.0625rem #d7e2eb;
   justify-content: center !important;
   display: flex;
@@ -31,6 +32,13 @@ const Challenges_tab_ul=styled.ul`
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
+  margin-top:auto;
+
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
 
 `;
 
@@ -39,7 +47,7 @@ const Challenges_tab_li=styled.li`
   border: 0;
   //box-shadow: inset 0 -0.1875rem #0078ff;
   background-color: transparent;
-  
+  font-size:16px;
   #MouseEvent:hover{
     color:#0078FF;
     border: 0;

@@ -64,6 +64,7 @@ const NavbarMenu_div = styled.div`
   flex-grow: 1;
   align-items: center;
   display: flex;
+  
 `;
 
 const NavbarGlobal_ul = styled.ul`
@@ -73,13 +74,17 @@ const NavbarGlobal_ul = styled.ul`
   //flex-basis: 100%;
   flex-grow: 1;
   align-items: center;
+
+  transform: translateX(calc(-50% + 40rem));
+  left: calc(50% - 40rem);
+  position: absolute; 
  
 `;
 
 const NavbarGlobal_li = styled.li`
   display:inline-block;
   vertical-align:middle; /*li 메뉴바높이 있어도 세로가운데정렬 적용안됨>>td에만 적용됨>>display를 td로바꿔줘야>>ul에 display로 table속성을 줘서 왼쪽 치우친것 펼쳐 정렬되도록*/
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.6;
   letter-spacing: -0.009em;
 
@@ -99,34 +104,30 @@ const NavbarGlobal_li = styled.li`
 
 const NavbarGlobal_divider=styled.li`
 
-  display:none;
+  
   width: 0.0625rem;
   height: 0.75rem;
   background-color: #44576C;
   //margin: 0.6875rem 0.5rem 0 0.5rem;
   margin: 0rem 0.5rem 0 0.5rem;
 
-  .h5 {
-    font-size: 14px;
-    line-height: 1.6;
-    letter-spacing: -0.009em;
-  }
-  
-  display: list-item;
-  text-align: -webkit-match-parent;
-
-  
 
 `;
 
 const NavbarUser_ul=styled.ul`
   
-  padding: 0px 20px 0px 10px;
-  display: flex !important;
-  flex-basis: auto;
+  flex-direction: row;
+  flex-wrap:wrap;
+  margin-left: auto !important;
+  display: flex;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none; 
+  margin-top:0;
+  flex-grow:0.03;
   
-  flex-grow: 1;
-  align-items: center;
+
+
 
 `;
 
@@ -134,7 +135,7 @@ const NavbarUser_li=styled.li`
 
   display:inline-block;
   vertical-align:middle; /*li 메뉴바높이 있어도 세로가운데정렬 적용안됨>>td에만 적용됨>>display를 td로바꿔줘야>>ul에 display로 table속성을 줘서 왼쪽 치우친것 펼쳐 정렬되도록*/
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.6;
   letter-spacing: -0.009em;
 
