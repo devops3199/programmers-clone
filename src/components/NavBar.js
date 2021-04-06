@@ -13,35 +13,34 @@ const NavBar = (props) => {
                height="34"             
                />
           </SetLogo> 
-          <NavbarMenu_div> 
+          <NavbarMenuDiv> 
 
-            <NavbarGlobal_ul>           
-             <NavbarGlobal_li><a href="/" id="Mousehover">탑 프로그래머스</a></NavbarGlobal_li>
-             <NavbarGlobal_li><a href="/" id="Mousehover">실력 체크</a></NavbarGlobal_li>
-             <NavbarGlobal_li><a href="/" id="Mousehover">개발자 채용</a></NavbarGlobal_li>
-             <NavbarGlobal_li><a href="/" id="Mousehover">테크 피드</a></NavbarGlobal_li> 
-             <NavbarGlobal_divider></NavbarGlobal_divider>
-             <NavbarGlobal_li><a href="/" 
+            <NavbarGlobalUl>           
+             <NavbarGlobalLi><a href="/" id="Mousehover">탑 프로그래머스</a></NavbarGlobalLi>
+             <NavbarGlobalLi><a href="/" id="Mousehover">실력 체크</a></NavbarGlobalLi>
+             <NavbarGlobalLi><a href="/" id="Mousehover">개발자 채용</a></NavbarGlobalLi>
+             <NavbarGlobalLi><a href="/" id="Mousehover">테크 피드</a></NavbarGlobalLi> 
+             <NavbarGlobalDivider></NavbarGlobalDivider>
+             <NavbarGlobalLi><a href="/" 
                               id="Mousehover"
-                              >코딩테스트 연습</a></NavbarGlobal_li>  
-             <NavbarGlobal_li><a href="/" id="Mousehover">프로그래밍 강의</a></NavbarGlobal_li>   
-            </NavbarGlobal_ul> 
+                              >코딩테스트 연습</a></NavbarGlobalLi>  
+             <NavbarGlobalLi><a href="/" id="Mousehover">프로그래밍 강의</a></NavbarGlobalLi>   
+            </NavbarGlobalUl> 
 
-            <NavbarUser_ul>
-              <NavbarUser_li><a href="/" id="Mousehover">계정 만들기</a></NavbarUser_li>
-              <NavbarUser_li><a href="/" id="Mousehover">로그인</a></NavbarUser_li>
-              <NavbarUser_li><a href="/" id="Mousehover">기업 회원</a></NavbarUser_li>
-            </NavbarUser_ul> 
+            <NavbarUserUl>
+              <NavbarUserLi><a href="/" id="Mousehover">계정 만들기</a></NavbarUserLi>
+              <NavbarUserLi><a href="/" id="Mousehover">로그인</a></NavbarUserLi>
+              <NavbarUserLi><a href="/" id="Mousehover">기업 회원</a></NavbarUserLi>
+            </NavbarUserUl> 
 
-          </NavbarMenu_div>   
+          </NavbarMenuDiv>   
         </BlackBar>
   );
 };
 
 const BlackBar = styled.div`
     display: flex;
-    height: 45px;
-    width: 100%;
+    height: 45px; 
     background: #0C151C;
     padding: 0.375rem 1rem;
     position: relative;
@@ -60,14 +59,15 @@ const SetLogo = styled.a`
     white-space: nowrap;
 `;
 
-const NavbarMenu_div = styled.div`
+const NavbarMenuDiv = styled.div`
   flex-grow: 1;
   align-items: center;
   display: flex;
   
+  
 `;
 
-const NavbarGlobal_ul = styled.ul`
+const NavbarGlobalUl = styled.ul`
 
   display: flex !important;
   flex-basis: auto;
@@ -81,7 +81,7 @@ const NavbarGlobal_ul = styled.ul`
  
 `;
 
-const NavbarGlobal_li = styled.li`
+const NavbarGlobalLi = styled.li`
   display:inline-block;
   vertical-align:middle; /*li 메뉴바높이 있어도 세로가운데정렬 적용안됨>>td에만 적용됨>>display를 td로바꿔줘야>>ul에 display로 table속성을 줘서 왼쪽 치우친것 펼쳐 정렬되도록*/
   font-size: 16px;
@@ -102,7 +102,7 @@ const NavbarGlobal_li = styled.li`
 
 `;
 
-const NavbarGlobal_divider=styled.li`
+const NavbarGlobalDivider=styled.li`
 
   
   width: 0.0625rem;
@@ -110,11 +110,12 @@ const NavbarGlobal_divider=styled.li`
   background-color: #44576C;
   //margin: 0.6875rem 0.5rem 0 0.5rem;
   margin: 0rem 0.5rem 0 0.5rem;
+  list-style: none;
 
 
 `;
 
-const NavbarUser_ul=styled.ul`
+const NavbarUserUl=styled.ul`
   
   flex-direction: row;
   flex-wrap:wrap;
@@ -128,10 +129,9 @@ const NavbarUser_ul=styled.ul`
   
 
 
-
 `;
 
-const NavbarUser_li=styled.li`
+const NavbarUserLi=styled.li`
 
   display:inline-block;
   vertical-align:middle; /*li 메뉴바높이 있어도 세로가운데정렬 적용안됨>>td에만 적용됨>>display를 td로바꿔줘야>>ul에 display로 table속성을 줘서 왼쪽 치우친것 펼쳐 정렬되도록*/

@@ -5,6 +5,8 @@ import SecondNavBar from './components/SecondNavBar';
 import Carousel from './components/Carousel';
 import Problems from './pages/Problems';
 import styled from 'styled-components';
+import Footer from './components/Footer';
+
 
 const App = (props) => {
 
@@ -16,6 +18,7 @@ const App = (props) => {
       <Carousel />
       <Problems />
     </Main>
+    <Footer/>
     </>
   );
 };
