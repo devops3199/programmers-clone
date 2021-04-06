@@ -8,17 +8,13 @@ const Filter = (props) => {
     const { is_first, category, list } = props;
 
     const Toggle = () => {
-        let height = filter_box.current.scrollHeight;
-
         if(tog){
-            //filter_box.current.style.visibility = 'hidden';
             filter_box.current.style.height = '0';
-            //down_svg.current.style.transform = 'rotate(180deg)';
+            filter_box.current.style.display = 'none';
             setTog(false);
         } else {
-            //filter_box.current.style.visibility = 'visible';
-            filter_box.current.style.height = `${height}px`;
-            //down_svg.current.style.transform = 'rotate(-180deg)';
+            filter_box.current.style.display = 'block';
+            filter_box.current.style.height = `auto`;
             setTog(true);
         }
     };
@@ -28,8 +24,10 @@ const Filter = (props) => {
             <FilterContainer>
                 <div>
                     <HeaderTitle onClick={Toggle}>
-                        <span>{category}</span>
-                        <Down className='down_svg' />
+                        <Category>{category}</Category>
+                        <span>
+                            <Down />
+                        </span>
                     </HeaderTitle>
                 </div>
                 <FilterList ref={filter_box}>
@@ -53,7 +51,9 @@ const Filter = (props) => {
             <FilterHeader>
                 <HeaderTitle onClick={Toggle}>
                     <span>{category}</span>
-                    <Down className='down_svg' />
+                    <span>
+                        <Down />
+                    </span>
                 </HeaderTitle>
             </FilterHeader>
             <FilterList ref={filter_box}>
@@ -101,16 +101,6 @@ const HeaderTitle = styled.a`
         }
     }
 
-    & span {
-        display: inline-block;
-        vertical-align: top;
-        line-height: 1.5rem;
-        margin-top: 0;
-        margin-bottom: 0;
-        font-size: 14px;
-        font-weight: 800;
-    }
-
     & svg {
         float: right;
         fill: #263747;
@@ -120,13 +110,22 @@ const HeaderTitle = styled.a`
     }
 `;
 
+const Category = styled.span`
+    display: inline-block;
+    vertical-align: top;
+    line-height: 1.5rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 800;
+`;
+
 const FilterList = styled.ul`
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     list-style: none;
-    height: 150px;
-    visibility: visible;
+    height: auto;
     transition: height .3s ease-out;
 `;
 
@@ -185,7 +184,7 @@ const FilterLabel = styled.label`
 
     &:after {
         content: '';
-        background: url(https://programmers.co.kr/assets/img-check-light-bcda1ac96cc8d1e2b0a4087aa60ff04b9b15d649a3b4b72a28f8f1112f42827b.png) no-repeat center;
+        //background: url(https://programmers.co.kr/assets/img-check-light-bcda1ac96cc8d1e2b0a4087aa60ff04b9b15d649a3b4b72a28f8f1112f42827b.png) no-repeat center;
         background-size: auto;
         background-size: cover;
         width: 0.875rem;
