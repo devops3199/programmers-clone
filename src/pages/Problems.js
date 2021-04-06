@@ -22,9 +22,28 @@ const Problem = (props) => {
           <Filter category="문제 모음" list={reference} />
         </FilterSection>
         <ProblemSection>
-          <AlgorithmList>
-              
-          </AlgorithmList>
+          <Row>
+            <AlgorithmList />
+            <AlgorithmList />
+            <AlgorithmList />
+            <AlgorithmList />
+            <AlgorithmList />
+            <AlgorithmList />
+            <AlgorithmList />
+            <AlgorithmList />
+            <AlgorithmList />
+            <AlgorithmList />
+            <AlgorithmList />
+            <AlgorithmList />
+            <AlgorithmList />
+            <AlgorithmList />
+            <AlgorithmList />
+            <AlgorithmList />
+            <AlgorithmList />
+            <AlgorithmList />
+            <AlgorithmList />
+            <AlgorithmList />
+          </Row>
         </ProblemSection>
       </ContentWrapper>
     </Container>
@@ -57,6 +76,15 @@ const ProblemSection = styled.div`
   padding-left: 1rem;
   flex: 0 0 66.666667%;
   max-width: 60%;
+`;
+
+const Row = styled.div`
+  transform: translateX(-0.5rem);
+  display: flex;
+  flex-flow: wrap;
+  padding: 0;
+  margin: 0;
+  width: calc(100% + 1rem);
 `;
 
 export default Problem;

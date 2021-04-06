@@ -124,6 +124,7 @@ const Temp = styled.div`
     height: 13.625rem;
     margin: 0 auto;
     padding: 0 16px;
+    margin-top: 1.5rem;
 `;
 
 const CarouselContainer = styled.div`
