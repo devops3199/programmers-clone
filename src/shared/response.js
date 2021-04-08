@@ -24,6 +24,7 @@ export const Banner = {
 
 export const AlgorithmLists = {
   ok: true,
+  total : 20,
   result: [
     {
       problem_id : 1,

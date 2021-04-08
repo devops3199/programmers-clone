@@ -1,5 +1,5 @@
 import React from 'react';
-import { Previous, Next, Down, Mysql, Oracle, CLang, CPlusPlus, CSharp, GoLang, Java, JavaScript, Kotlin, Python2, Python3, Ruby, Scala, Swift } from '../media/svg/SvgIcon';
+import { Mysql, Oracle, CLang, CPlusPlus, CSharp, GoLang, Java, JavaScript, Kotlin, Python2, Python3, Ruby, Scala, Swift } from '../media/svg/SvgIcon';
 
 const Svg = (props) => {
     
