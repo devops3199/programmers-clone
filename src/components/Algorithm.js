@@ -1,34 +1,33 @@
 import React from 'react';
 import styled from 'styled-components';
 import Svg from './Svg';
-import { Previous, Next, Down, Mysql, Oracle, CLang, CPlusPlus, CSharp, GoLang, Java, JavaScript, Kotlin, Python2, Python3, Ruby, Scala, Swift } from '../media/svg/SvgIcon';
 
 const Algorithm = (props) => {
-
-    const { problem_name, problem_reference, problem_solved, language } = props.list;
+    const { problemTitle, problemSource, finishedCount, problemLanguage } = props.list;
+    const arr = problemLanguage.split(' ');
 
     return (
         <ColItem>
-            <ItemContent>
-                <ItemTitleBox>
-                    <ItemTitle>{problem_name}</ItemTitle>
-                    <ItemSubTitleBox>
-                        <span>{problem_reference}</span>
-                        <span>{problem_solved}명 완료</span>
-                    </ItemSubTitleBox>
-                </ItemTitleBox>
-                <LangBox>
-                    {language.map((val, index) => {
-                        return (
-                            <IconBox key={index}>
-                                <IconLink>
-                                    <Svg val={val}/>
-                                </IconLink>
-                            </IconBox>
-                        );
-                    })}
-                </LangBox>
-            </ItemContent>
+        <ItemContent>
+            <ItemTitleBox>
+            <ItemTitle>{problemTitle}</ItemTitle>
+            <ItemSubTitleBox>
+                <span>{problemSource}</span>
+                <span>{finishedCount}명 완료</span>
+            </ItemSubTitleBox>
+            </ItemTitleBox>
+            <LangBox>
+            {arr.map((val, index) => {
+                return (
+                <IconBox key={index}>
+                    <IconLink>
+                    <Svg val={val} />
+                    </IconLink>
+                </IconBox>
+                );
+            })}
+            </LangBox>
+        </ItemContent>
         </ColItem>
     );  
 };
@@ -37,6 +36,11 @@ const ColItem = styled.div`
     width: calc(95% / 2);
     padding-left: 0.5rem;
     padding-right: 0.5rem;
+
+    @media (max-width: 991px) {
+        width: 100%;
+        padding: 0 0.5rem 1rem 0.5rem;
+    }
 `;
 
 const ItemContent = styled.div`
@@ -48,6 +52,34 @@ const ItemContent = styled.div`
     box-shadow: none;
     background-color: transparent;
 
+    @media (max-width: 991px) {
+        transition-duration: 0.08s;
+        transition-property: all;
+        transition-timing-function: ease-in-out;
+        transition-delay: initial;
+        position: relative;
+        display: block;
+        padding: 1rem;
+        border-radius: 0.25rem;
+        background-color: white;
+        box-shadow: inset 0 0 0 0.0625rem #D7E2EB;
+
+        &:before {
+            transition-duration: 0.08s;
+            transition-property: all;
+            transition-timing-function: ease-in-out;
+            transition-delay: initial;
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 1rem;
+            width: 2.5rem;
+            height: 0.1875rem;
+            background-color: #2196F3;
+        }
+    }
+
     &:before {
         transition-duration: 0.08s;
         transition-property: all;
@@ -56,13 +88,11 @@ const ItemContent = styled.div`
         content: '';
         display: block;
         position: absolute;
-        top: 0;
-        left: 1rem;
+        top: -0.0625rem;
+        left: 0;
         width: 2.5rem;
         height: 0.1875rem;
         background-color: #2196F3;
-        top: -0.0625rem;
-        left: 0;
     }
 `;
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 import { Previous, Next } from '../media/svg/SvgIcon';
-import { Banner } from '../shared/response';
 
 const Carousel = (props) => {
     const container = React.useRef();
@@ -12,13 +12,14 @@ const Carousel = (props) => {
 
     const [current_index, setCurrentIndex] = React.useState(0);
     const [stop, setStop] = React.useState(false);
+    const [banner, setBanner] = React.useState([]);
 
     const MoveSlide = (index) => {
         let slider = slider_container.current;
         slider.style.left = (-100 * index) + '%';
         setCurrentIndex(index);
 
-        if(index === (Banner.result.length-1)) {
+        if(index === 5) {
             next.current.style.display = 'none';
         } else if (index === 0) {
             prev.current.style.display = 'none';
@@ -37,12 +38,12 @@ const Carousel = (props) => {
         if(index === 0){
             next = document.getElementsByClassName(`bullet-${index+1}`);
             next[0].style.opacity = '.35';
-        } else if (index < Banner.result.length - 1) {
+        } else if (index < 5) {
             next = document.getElementsByClassName(`bullet-${index+1}`);
             next[0].style.opacity = '.35';
         }
 
-        if(index > 0 && index < Banner.result.length){
+        if(index > 0 && index < 6){
             prev = document.getElementsByClassName(`bullet-${index-1}`);
             prev[0].style.opacity = '.35';
         }
@@ -52,10 +53,12 @@ const Carousel = (props) => {
     };
 
     React.useEffect(() => {
-        // 초기값 설정
-        prev.current.style.display = 'none';
-        let bullet = document.getElementsByClassName('bullet-0');
-        bullet[0].style.opacity = '1';
+        //정보 가져오기
+        axios.get('http://54.180.113.24/banner').then((res)=>{
+            setBanner(res.data);
+        }).catch((err)=>{
+            console.log(err);
+        });
     }, []);
 
     React.useEffect(() => {
@@ -79,12 +82,13 @@ const Carousel = (props) => {
         };
     }, [stop]);
 
+
     return (
       <>
         <Temp>
           <CarouselContainer ref={container}>
              <BulletContainer>
-                {Banner.result.map((val, index) => {
+                {banner.map((val, index) => {
                     let name = 'bullet-' + index;
                     return (
                     <Bullet key={index} className={name} ref={bullet}/>
@@ -98,7 +102,7 @@ const Carousel = (props) => {
                 <Next/>
             </NextContainer>
             <SlideContainer ref={slider_container}>
-              {Banner.result.map((val, index) => {
+              {banner.map((val, index) => {
                 let value = index * 100;
                 let url = `url(${val.image}) no-repeat center`;
 

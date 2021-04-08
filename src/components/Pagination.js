@@ -1,7 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import { setPageIndex } from '../redux/modules/post';
+import { useDispatch } from 'react-redux';
 
 const Pagination = (props) => {
+    const dispatch = useDispatch();
     const pages = new Array(Math.ceil(props.total / 20)).fill(0);
     const [currentPage, setCurrentPage] = React.useState(1);
     const [prevPage, setPrevPage] = React.useState('pagination_1');
@@ -11,18 +14,24 @@ const Pagination = (props) => {
     }; 
 
     React.useEffect(() => {
-        // deactive
-        let deactive_paginator = document.getElementsByClassName(prevPage);
-        deactive_paginator[0].style.color = '#263747';
-        deactive_paginator[0].style.backgroundColor = 'rgba(50,50,124,0.08)';
+      // deactive
+      let deactive_paginator = document.getElementsByClassName(prevPage);
+      deactive_paginator[0].style.color = '#263747';
+      deactive_paginator[0].style.backgroundColor = 'rgba(50,50,124,0.08)';
 
-        // active
-        let name = `pagination_${currentPage}`;
-        let active_paginator = document.getElementsByClassName(name);
-        active_paginator[0].style.color = '#fff';
-        active_paginator[0].style.backgroundColor = '#0078FF';
+      // active
+      let name = `pagination_${currentPage}`;
+      let active_paginator = document.getElementsByClassName(name);
+      active_paginator[0].style.color = '#fff';
+      active_paginator[0].style.backgroundColor = '#0078FF';
 
-        setPrevPage(name);
+      setPrevPage(name);
+
+      const indexOfLastPage = currentPage * 20;
+      const indexOfFirstPage = indexOfLastPage - 20;
+
+      dispatch(setPageIndex(indexOfFirstPage, indexOfLastPage));
+
     }, [currentPage]);
 
     return (
@@ -49,9 +58,6 @@ const Pagination = (props) => {
               </PageItem>
             );
           })}
-          {/* <PageItem className='skip'>
-                    <a className='skip' style={disabled} href='/'>...</a>
-                </PageItem> */}
           <PageItem>
             <a
               onClick={() => {

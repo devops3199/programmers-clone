@@ -1,14 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 import { Down } from '../media/svg/SvgIcon';
 import { useDispatch } from 'react-redux';
 import { addFilter, removeFilter } from '../redux/modules/filter';
+import { setFilteredPostAWS } from '../redux/modules/post';
 
 const Filter = (props) => {
     const dispatch = useDispatch();
     const filter_box = React.useRef();
     const [tog, setTog] = React.useState(true);
-    const { is_first, category, list } = props;
+    const { is_first, category } = props;
+    const [arr, setArr] = React.useState([]);
 
     const GetCategory = (val) => {
         switch(val){
@@ -39,12 +42,52 @@ const Filter = (props) => {
         let checked = e.target.checked;
         let val = e.target.parentNode.childNodes[1].textContent;
 
+        let temp = GetCategory(category);
+
         if (checked) {
-            dispatch(addFilter(val));
+            dispatch(addFilter(val, temp));
+            dispatch(setFilteredPostAWS(val, temp));
         } else {
-            dispatch(removeFilter(val));
+            dispatch(removeFilter(val, temp));
+            dispatch(setFilteredPostAWS(val, temp));
         }
     };
+
+    React.useEffect(() => {
+        let list_arr = [];
+        switch(category) {
+            case "난이도":
+                axios.get('http://54.180.113.24/filter/level').then((res)=>{
+                    res.data.forEach((val) => {
+                        list_arr.push(val.level);
+                    });
+                    setArr(list_arr);
+                }).catch((err)=>{
+                    console.log(err);
+                });
+                break;
+            case "프로그래밍 언어":
+                axios.get('http://54.180.113.24/filter/language').then((res)=>{
+                    res.data.forEach((val) => {
+                        list_arr.push(val.language);
+                    });
+                    setArr(list_arr);
+                }).catch((err)=>{
+                    console.log(err);
+                });
+                break;
+            case "문제 모음":
+                axios.get('http://54.180.113.24/filter/reference').then((res)=>{
+                    res.data.forEach((val) => {
+                        list_arr.push(val.reference);
+                    });
+                    setArr(list_arr);
+                }).catch((err)=>{
+                    console.log(err);
+                });
+                break;
+        }
+    }, []);
 
     return(
         <FilterContainer>
@@ -70,7 +113,7 @@ const Filter = (props) => {
                 </FilterHeader>
             </>)}
             <FilterList ref={filter_box}>
-                {list.map((val, index) => {
+                {arr.map((val, index) => {
                     let temp = GetCategory(category);
                     let name = `filter_${temp}_${index}`;
                     return (

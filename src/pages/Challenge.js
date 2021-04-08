@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import Filter from '../components/Filter';
 import Pagination from '../components/Pagination';
 import Algorithm from '../components/Algorithm';
-import { Level, Language, Reference, AlgorithmLists } from '../shared/response';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearFilter, removeFilter } from '../redux/modules/filter';
 import { setPostAWS } from '../redux/modules/post';
@@ -12,8 +11,7 @@ const Challenge = (props) => {
   const dispatch = useDispatch();
   const filter = useSelector((state) => state.filter.list);
   const total = useSelector((state) => state.post.total);
-  //const algorithms = useSelector((state) => state.post.list);
-  const algorithms = AlgorithmLists.result;
+  const algorithms = useSelector((state) => state.post.list);
 
   React.useEffect(() => {
     dispatch(setPostAWS());
@@ -23,9 +21,9 @@ const Challenge = (props) => {
     <Container>
       <ContentWrapper>
         <FilterSection>
-          <Filter is_first={true} category="난이도" list={Level.result} />
-          <Filter category="프로그래밍 언어" list={Language.result} />
-          <Filter category="문제 모음" list={Reference.result} />
+          <Filter is_first={true} category="난이도" />
+          <Filter category="프로그래밍 언어" />
+          <Filter category="문제 모음" />
         </FilterSection>
         <ProblemSection>
           {filter.length === 0 ? 
@@ -36,7 +34,7 @@ const Challenge = (props) => {
                 return (
                   <FilterLabel key={index}>
                     <span>
-                      {val}
+                      {val.split('?')[0]}
                       <button onClick={(e) => {
                         let value = e.target.parentNode.textContent.slice(0,-1);
                         dispatch(removeFilter(value));
@@ -85,6 +83,10 @@ const FilterSection = styled.div`
   padding-right: 2.5rem;
   flex: 0 0 33.333333%;
   max-width: 30%;
+
+  @media (max-width: 500px) {
+    display: none;
+  }
 `;
 
 const ProblemSection = styled.div`
