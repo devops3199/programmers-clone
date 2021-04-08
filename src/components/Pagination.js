@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 
 const Pagination = (props) => {
     const dispatch = useDispatch();
-    const pages = new Array(Math.ceil(props.total / 20)).fill(0);
+    const pages = new Array(Math.ceil(props.total / 20)).fill(0); // 총 몇 페이지 필요할지 계산
     const [currentPage, setCurrentPage] = React.useState(1);
     const [prevPage, setPrevPage] = React.useState('pagination_1');
 
@@ -14,12 +14,12 @@ const Pagination = (props) => {
     }; 
 
     React.useEffect(() => {
-      // deactive
+      // deactive, 다음 페이지로 넘어갔으니 전에 있던 페이지는 원상 복구
       let deactive_paginator = document.getElementsByClassName(prevPage);
       deactive_paginator[0].style.color = '#263747';
       deactive_paginator[0].style.backgroundColor = 'rgba(50,50,124,0.08)';
 
-      // active
+      // active, 현재 페이지가 어딘지 표시
       let name = `pagination_${currentPage}`;
       let active_paginator = document.getElementsByClassName(name);
       active_paginator[0].style.color = '#fff';
@@ -89,7 +89,6 @@ const PageList = styled.ul`
     padding-left: 0;
 
     & li:first-child > a {
-        //color: #CDD7E0;
         margin-left: 0;
         border-top-left-radius: 0.25rem;
         border-bottom-left-radius: 0.25rem;
@@ -103,9 +102,6 @@ const PageList = styled.ul`
 `;
 
 const PageItem = styled.li`
-    :not(.skip){
-        cursor: pointer;   
-    }
     & a {
         color: #263747;
         background-color: rgba(50,50,124,0.08);
@@ -114,8 +110,9 @@ const PageItem = styled.li`
         border: 0;
         text-decoration: none;
         font-weight: 500;
+        cursor: pointer; 
 
-        :not(.skip):hover {
+        :hover {
             color: #263747;
             background-color: rgba(50,50,124,0.16);
         }

@@ -4,7 +4,7 @@ import Svg from './Svg';
 
 const Algorithm = (props) => {
     const { problemTitle, problemSource, finishedCount, problemLanguage } = props.list;
-    const arr = problemLanguage.split(' ');
+    const arr = problemLanguage.split(' '); // "c c++ c# java python3" -> convert this to an array
 
     return (
         <ColItem>

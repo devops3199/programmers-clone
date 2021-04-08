@@ -1,10 +1,11 @@
 import axios from 'axios';
-import { useSelector } from 'react-redux';
 
+// Action
 const GET_POST = 'post/GET_POST';
 const SET_POST = 'post/SET_POST';
 const SET_PAGE_INDEX = 'post/SET_PAGE_INDEX';
 
+// Action Creator
 export const getPost = (page) => {
     return { type : GET_POST, page };
 };
@@ -17,6 +18,7 @@ export const setPageIndex = (start, end) => {
     return { type : SET_PAGE_INDEX, start, end };
 };
 
+// Initial State
 const initialState = {
     original : [],
     list : [],
@@ -25,6 +27,7 @@ const initialState = {
     end : 0,
 };
 
+// 첫 로딩시 모든 문제 데이터 반환 [Middleware]
 export const setPostAWS = () => {
     return function(dispatch, getState, {history}){
         axios.get('http://54.180.113.24/').then((res)=>{
@@ -35,6 +38,7 @@ export const setPostAWS = () => {
     };
 };
 
+// 필터된 문제 데이터 반환 [Middleware]
 export const setFilteredPostAWS = (val, temp) => {
     return function(dispatch, getState, {history}){
         const temp = getState((state) => state.filter);
@@ -79,12 +83,13 @@ export const setFilteredPostAWS = (val, temp) => {
     };
 };
 
+// Reducer
 export default function reducer(state = initialState, action = {}) {
     switch (action.type) {
         case 'post/GET_POST':
             return state;
         case 'post/SET_POST':
-            const set_list = action.page.slice(1, 21);
+            const set_list = action.page.slice(1, 21); // 첫 페이지의 20개
             return {original : action.page, list : set_list, total : action.page.length};
         case 'post/SET_PAGE_INDEX':
             let page_list = state.original.slice(action.start, action.end);

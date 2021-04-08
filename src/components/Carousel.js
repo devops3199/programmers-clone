@@ -10,15 +10,16 @@ const Carousel = (props) => {
     const prev = React.useRef();
     const next = React.useRef();
 
-    const [current_index, setCurrentIndex] = React.useState(0);
-    const [stop, setStop] = React.useState(false);
-    const [banner, setBanner] = React.useState([]);
+    const [current_index, setCurrentIndex] = React.useState(0); // 현재 보여지는 슬라이더
+    const [stop, setStop] = React.useState(false); // 사용자가 이전/다음 버튼누르면 자동 슬라이딩 종료
+    const [banner, setBanner] = React.useState([]); // 슬라이더 정보
 
     const MoveSlide = (index) => {
         let slider = slider_container.current;
-        slider.style.left = (-100 * index) + '%';
+        slider.style.left = (-100 * index) + '%'; // 좌측으로 이동
         setCurrentIndex(index);
 
+        // 버튼 활성화 설정
         if(index === 5) {
             next.current.style.display = 'none';
         } else if (index === 0) {
@@ -31,6 +32,7 @@ const Carousel = (props) => {
         LightBullet(index);
     };
 
+    // 하단 흰색 동그라미 효과 
     const LightBullet = (index) => {
         let prev = null;
         let next = null;
@@ -53,7 +55,7 @@ const Carousel = (props) => {
     };
 
     React.useEffect(() => {
-        //정보 가져오기
+        // get image & link from server
         axios.get('http://54.180.113.24/banner').then((res)=>{
             setBanner(res.data);
         }).catch((err)=>{
@@ -64,6 +66,7 @@ const Carousel = (props) => {
     React.useEffect(() => {
         let index = 0;
 
+        // 2.5초 마다 해당 함수 호출
         const slide_timer = setInterval(() => {
             if(index === 6){
                 index = 0;
@@ -71,7 +74,7 @@ const Carousel = (props) => {
                 bullet[0].style.opacity = '.35';
             } 
             MoveSlide(index++);
-        }, 2500);
+        }, 2500); 
         
         if(stop) {
             clearInterval(slide_timer);

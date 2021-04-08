@@ -4,39 +4,29 @@ import {useState} from "react";
 
 
 const SecondNavBar = (props) => {
-  
   const [currentClick, setCurrentClick]=useState(null);
   const [prevClick, setPrevClick]=useState(null); 
 
   const GetClick = (e) => { 
-
-        console.log(e.target.id); 
         setCurrentClick(e.target.id); //하는순간 값이 바뀌고      
-    }
+  }
 
   React.useEffect((e) => {
   
-  if(currentClick!==null)
-  {
-    console.log(currentClick);
-   
-    let current = document.getElementById(currentClick);
+    if(currentClick !== null) {
+      let current = document.getElementById(currentClick);
+      current.style.color="#0078FF"; 
+      current.style.border="0";
+      current.style.boxShadow="inset 0 -0.1875rem #0078ff";
+      current.style.borderRadius="0";
+      current.style.padding="0.5rem 0";
+      current.style.backgroundColor="transparent";
+    }
     
-     current.style.color="#0078FF"; 
-     current.style.border="0";
-     current.style.boxShadow="inset 0 -0.1875rem #0078ff";
-     current.style.borderRadius="0";
-     current.style.padding="0.5rem 0";
-     current.style.backgroundColor="transparent";
-  }
-  
-    if(prevClick!==null)
-    {
+    if(prevClick !== null) {
       let prev=document.getElementById(prevClick);
-      
       prev.style.color="#263747";      
       prev.style.boxShadow="none";
-
     }
 
     setPrevClick(currentClick);
@@ -58,7 +48,6 @@ const ChallengesTab= styled.div`
   top: 0;
   z-index: 2;
   background-color: white;
-
 `;
 
 const ChallengesTabUl=styled.ul`

@@ -9,9 +9,9 @@ import { setFilteredPostAWS } from '../redux/modules/post';
 const Filter = (props) => {
     const dispatch = useDispatch();
     const filter_box = React.useRef();
-    const [tog, setTog] = React.useState(true);
+    const [tog, setTog] = React.useState(true); // Show & Hide Toggle
     const { is_first, category } = props;
-    const [arr, setArr] = React.useState([]);
+    const [arr, setArr] = React.useState([]); // 화면에 보여질 필터 리스트
 
     const GetCategory = (val) => {
         switch(val){
@@ -45,9 +45,11 @@ const Filter = (props) => {
         let temp = GetCategory(category);
 
         if (checked) {
+            // add filter
             dispatch(addFilter(val, temp));
             dispatch(setFilteredPostAWS(val, temp));
         } else {
+            // remove filter
             dispatch(removeFilter(val, temp));
             dispatch(setFilteredPostAWS(val, temp));
         }

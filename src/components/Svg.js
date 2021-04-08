@@ -3,7 +3,7 @@ import { Mysql, Oracle, CLang, CPlusPlus, CSharp, GoLang, Java, JavaScript, Kotl
 
 const Svg = (props) => {
     
-    const type = props.val.toUpperCase();
+    const type = props.val.toUpperCase(); // 비교가 쉽게 대문자로 변환
 
     switch (type) {
       case "MYSQL":

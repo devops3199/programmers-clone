@@ -9,12 +9,12 @@ import { setPostAWS } from '../redux/modules/post';
 
 const Challenge = (props) => {
   const dispatch = useDispatch();
-  const filter = useSelector((state) => state.filter.list);
-  const total = useSelector((state) => state.post.total);
-  const algorithms = useSelector((state) => state.post.list);
+  const filter = useSelector((state) => state.filter.list); // 현재 적용된 필터값들
+  const total = useSelector((state) => state.post.total); // 총 몇개의 문제
+  const algorithms = useSelector((state) => state.post.list); // 문제 리스트
 
   React.useEffect(() => {
-    dispatch(setPostAWS());
+    dispatch(setPostAWS()); // 문제 가져오기
   }, []);
 
   return (
