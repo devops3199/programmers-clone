@@ -1,11 +1,27 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Down } from '../media/svg/SvgIcon';
+import { useDispatch } from 'react-redux';
+import { addFilter, removeFilter } from '../redux/modules/filter';
 
 const Filter = (props) => {
+    const dispatch = useDispatch();
     const filter_box = React.useRef();
     const [tog, setTog] = React.useState(true);
     const { is_first, category, list } = props;
+
+    const GetCategory = (val) => {
+        switch(val){
+            case "난이도":
+                return "level";
+            case "프로그래밍 언어":
+                return "language";
+            case "문제 모음":
+                return "reference";
+            default:
+                return null;
+        }
+    };
 
     const Toggle = () => {
         if(tog){
@@ -19,9 +35,21 @@ const Filter = (props) => {
         }
     };
 
-    if(is_first) {
-        return (
-            <FilterContainer>
+    const AddFilter = (e) => {
+        let checked = e.target.checked;
+        let val = e.target.parentNode.childNodes[1].textContent;
+
+        if (checked) {
+            dispatch(addFilter(val));
+        } else {
+            dispatch(removeFilter(val));
+        }
+    };
+
+    return(
+        <FilterContainer>
+            {is_first ? 
+            (<>
                 <div>
                     <HeaderTitle onClick={Toggle}>
                         <Category>{category}</Category>
@@ -30,38 +58,25 @@ const Filter = (props) => {
                         </span>
                     </HeaderTitle>
                 </div>
-                <FilterList ref={filter_box}>
-                    {list.map((val, index) => {
-                        return (
-                            <List key={index}>
-                                <FilterInput id='challenge_filter_level_1' type='checkbox' data-filter='1' data-filter-type='level' />
-                                <FilterLabel htmlFor='challenge_filter_level_1'>
-                                    <span>{val}</span>
-                                </FilterLabel>
-                            </List>
-                        );
-                    })}
-                </FilterList>
-            </FilterContainer>
-        );
-    }
-
-    return(
-        <FilterContainer>
-            <FilterHeader>
-                <HeaderTitle onClick={Toggle}>
-                    <span>{category}</span>
-                    <span>
-                        <Down />
-                    </span>
-                </HeaderTitle>
-            </FilterHeader>
+            </>) : 
+            (<>
+                <FilterHeader>
+                    <HeaderTitle onClick={Toggle}>
+                        <span>{category}</span>
+                        <span>
+                            <Down />
+                        </span>
+                    </HeaderTitle>
+                </FilterHeader>
+            </>)}
             <FilterList ref={filter_box}>
                 {list.map((val, index) => {
+                    let temp = GetCategory(category);
+                    let name = `filter_${temp}_${index}`;
                     return (
                         <List key={index}>
-                            <FilterInput id='challenge_filter_level_1' type='checkbox' data-filter='1' data-filter-type='level' />
-                            <FilterLabel htmlFor='challenge_filter_level_1'>
+                            <FilterInput id={name} type='checkbox' onClick={AddFilter} />
+                            <FilterLabel htmlFor={name}>
                                 <span>{val}</span>
                             </FilterLabel>
                         </List>
@@ -130,6 +145,7 @@ const FilterList = styled.ul`
 `;
 
 const List = styled.li`
+    position: relative;
     display: block;
     margin-top: .5rem;
     font-size: 14px;
@@ -147,8 +163,24 @@ const FilterInput = styled.input`
     width: 0;
     height: 0;
     left: 0;
-    margin: 0;
+    margin: 0 0 0 -10px;
     position: absolute;
+
+    :checked + label:after{
+        content: '';
+        background: url(https://programmers.co.kr/assets/img-check-light-bcda1ac96cc8d1e2b0a4087aa60ff04b9b15d649a3b4b72a28f8f1112f42827b.png) no-repeat center;
+        background-size: auto;
+        background-size: cover;
+        background-color: #263747;
+        border: 0.35rem solid #263747;
+        border-radius: 0.25rem;
+        width: 0.875rem;
+        height: 0.75rem;
+        display: block;
+        position: absolute;
+        top: 0.1rem;
+        left: 0.05rem;
+    }
 `;
 
 const FilterLabel = styled.label`
@@ -182,18 +214,6 @@ const FilterLabel = styled.label`
         }
     }
 
-    &:after {
-        content: '';
-        //background: url(https://programmers.co.kr/assets/img-check-light-bcda1ac96cc8d1e2b0a4087aa60ff04b9b15d649a3b4b72a28f8f1112f42827b.png) no-repeat center;
-        background-size: auto;
-        background-size: cover;
-        width: 0.875rem;
-        height: 0.75rem;
-        display: block;
-        position: absolute;
-        top: 0.25rem;
-        left: 0.1875rem;
-    }
 
     & span {
         font-size: 14px;

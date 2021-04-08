@@ -1,12 +1,23 @@
+import React from 'react';
 import styled from 'styled-components';
 import Filter from '../components/Filter';
-import Pager from '../components/Pager';
+import Pagination from '../components/Pagination';
 import Algorithm from '../components/Algorithm';
 import { Level, Language, Reference, AlgorithmLists } from '../shared/response';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearFilter, removeFilter } from '../redux/modules/filter';
+import { setPostAWS } from '../redux/modules/post';
 
 const Challenge = (props) => {
-
+  const dispatch = useDispatch();
+  const filter = useSelector((state) => state.filter.list);
+  const total = useSelector((state) => state.post.total);
+  //const algorithms = useSelector((state) => state.post.list);
   const algorithms = AlgorithmLists.result;
+
+  React.useEffect(() => {
+    dispatch(setPostAWS());
+  }, []);
 
   return (
     <Container>
@@ -17,6 +28,28 @@ const Challenge = (props) => {
           <Filter category="문제 모음" list={Reference.result} />
         </FilterSection>
         <ProblemSection>
+          {filter.length === 0 ? 
+          (<></>) : 
+          (<>
+            <Filtered>
+              {filter.map((val, index) => {
+                return (
+                  <FilterLabel key={index}>
+                    <span>
+                      {val}
+                      <button onClick={(e) => {
+                        let value = e.target.parentNode.textContent.slice(0,-1);
+                        dispatch(removeFilter(value));
+                      }}>X</button>
+                    </span>
+                  </FilterLabel>
+                );
+              })}
+              <button onClick={() => {
+                dispatch(clearFilter());
+              }}>필터 초기화</button>
+            </Filtered>
+          </>)}
           <Row>
             {algorithms.map((val, index) => {
               return (
@@ -25,7 +58,7 @@ const Challenge = (props) => {
             })}
           </Row>
           <PagerSection>
-            <Pager/>
+            <Pagination total={total} />
           </PagerSection>
         </ProblemSection>
       </ContentWrapper>
@@ -59,6 +92,53 @@ const ProblemSection = styled.div`
   padding-left: 1rem;
   flex: 0 0 66.666667%;
   max-width: 60%;
+`;
+
+const Filtered = styled.div`
+  display: block;
+
+  & > button {
+    font-size: 11px;
+    line-height: 1.5;
+    margin: 0 1rem 0.5rem 0;
+    padding: 0.0625rem 0.25rem 0 0.25rem;
+    display: inline-block;
+    letter-spacing: -0.009em;
+    font-weight: 500;
+    color: #0078FF;
+    background-color: transparent;
+    border: 1px solid transparent;
+    cursor: pointer;
+  }
+`;
+
+const FilterLabel = styled.div`
+    display: inline-block;
+    vertical-align: top;
+    padding-bottom: 1rem;
+
+    & > span {
+      margin: 0 0.25rem 0.5rem 0;
+      display: inline-flex;
+      align-items: center;
+      font-weight: 400;
+      padding: 0.25rem 0.75rem;
+      background-color: #0078FF;
+      border-radius: 15px;
+      color: #fff;
+      font-size: 11px;
+    }
+
+    & > span > button {
+      padding: 0;
+      margin-left: 0.25rem;
+      border: 0;
+      background-color: transparent;
+      font-size: 11px;
+      line-height: 1.5;
+      color: #fff;
+      cursor: pointer;
+    }
 `;
 
 const Row = styled.div`
