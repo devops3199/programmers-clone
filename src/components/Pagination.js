@@ -8,7 +8,7 @@ const Pagination = (props) => {
 
     const GetPage = (e) => {
         setCurrentPage(parseInt(e.target.text));
-    };
+    }; 
 
     React.useEffect(() => {
         // deactive

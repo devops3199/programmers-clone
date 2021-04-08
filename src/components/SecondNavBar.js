@@ -4,29 +4,50 @@ import {useState} from "react";
 
 
 const SecondNavBar = (props) => {
-  const [btnClick,setBtnClick]=useState(false);
-  const navLinkActive=()=>{
-      setBtnClick(!btnClick);
-  }
+  
+  const [currentClick, setCurrentClick]=useState(null);
+  const [prevClick, setPrevClick]=useState(null); 
 
-//클릭했을 때 class를 nav-link-active로 바꿔주기
-//다른게 클릭되면 일반 클래스로 돌아가기
+  const GetClick = (e) => { 
+
+        console.log(e.target.id); 
+        setCurrentClick(e.target.id); //하는순간 값이 바뀌고      
+    }
+
+  React.useEffect((e) => {
+  
+  if(currentClick!==null)
+  {
+    console.log(currentClick);
+   
+    let current = document.getElementById(currentClick);
+    
+     current.style.color="#0078FF"; 
+     current.style.border="0";
+     current.style.boxShadow="inset 0 -0.1875rem #0078ff";
+     current.style.borderRadius="0";
+     current.style.padding="0.5rem 0";
+     current.style.backgroundColor="transparent";
+  }
+  
+    if(prevClick!==null)
+    {
+      let prev=document.getElementById(prevClick);
+      
+      prev.style.color="#263747";      
+      prev.style.boxShadow="none";
+
+    }
+
+    setPrevClick(currentClick);
+}, [currentClick]); 
 
   return (
    <ChallengesTab>
      <ChallengesTabUl>
-       <ChallengesTabLi><a  
-                        id="MouseEvent" 
-                        width= "145.479px" 
-                        onClick={()=>{
-                          setBtnClick(!btnClick);
-                          console.log(btnClick);
-                          // btnClick ? console.log('클릭후') : console.log('클릭전');
-                        }}>
-                          
-                          코딩테스트 고득점 Kit</a></ChallengesTabLi>
-       <ChallengesTabLi><a href="/" className="nav-tabs" id="MouseEvent" width= "103.562px">SQL 고득점 Kit</a></ChallengesTabLi>
-       <ChallengesTabLi><a href="/" className="nav-tabs" id="MouseEvent" width= "62.667px">모든 문제</a></ChallengesTabLi>
+       <ChallengesTabLi><a id="Button1" width= "145.479px" onClick={GetClick}>코딩테스트 고득점 Kit</a></ChallengesTabLi>
+       <ChallengesTabLi><a className="nav-tabs" id="Button2" width= "103.562px" onClick={GetClick}>SQL 고득점 Kit</a></ChallengesTabLi>
+       <ChallengesTabLi><a className="nav-tabs" id="Button3" width= "62.667px" onClick={GetClick}>모든 문제</a></ChallengesTabLi>
      </ChallengesTabUl>
    </ChallengesTab>
   );
@@ -52,12 +73,12 @@ const ChallengesTabUl=styled.ul`
   margin-bottom: 0px;
   border:0;
 
-    border-radius: 0;
-    padding: 0.5rem 0;
-    color: #263747;
+  border-radius: 0;
+  padding: 0.5rem 0;
+  color: #263747;
 
-    padding-top: 0px;
-    padding-bottom: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
 
 `;
 
@@ -81,22 +102,43 @@ const ChallengesTabLi=styled.li`
   padding-top: 0px;
   padding-bottom: 0px;
   
-  #MouseEvent:visited{
-    // color: #0078FF;
-    // border: 0;
-    // box-shadow: inset 0 -0.1875rem #0078ff;
-    // border-radius: 0;
-    // padding: 0.5rem 0;
-    // background-color: transparent;
+
+  #Button1:hover{
+    color:#0078FF;
+    border: 0;      
   }
-  
-  #MouseEvent:hover{
+
+  #Button1:active{
+    color: #0078FF;
+    border: 0;
+    box-shadow: inset 0 -0.1875rem #0078ff;
+    border-radius: 0;
+    padding: 0.5rem 0;
+    background-color: transparent;
+  }
+
+  #Button2:hover{
     color:#0078FF;
     border: 0;      
   }
   
 
-  #MouseEvent:active{
+  #Button2:active{
+    color: #0078FF;
+    border: 0;
+    box-shadow: inset 0 -0.1875rem #0078ff;
+    border-radius: 0;
+    padding: 0.5rem 0;
+    background-color: transparent;
+  }
+
+  #Button3:hover{
+    color:#0078FF;
+    border: 0;      
+  }
+  
+
+  #Button3:active{
     color: #0078FF;
     border: 0;
     box-shadow: inset 0 -0.1875rem #0078ff;
@@ -121,10 +163,6 @@ const ChallengesTabLi=styled.li`
     background-color: transparent;
   
   }
-`;
-
-const ChallengesTabA=styled.a`
-
 `;
 
 export default SecondNavBar;
