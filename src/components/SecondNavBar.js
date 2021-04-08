@@ -1,14 +1,32 @@
 import React from "react";
 import styled from "styled-components";
+import {useState} from "react";
+
 
 const SecondNavBar = (props) => {
+  const [btnClick,setBtnClick]=useState(false);
+  const navLinkActive=()=>{
+      setBtnClick(!btnClick);
+  }
+
+//클릭했을 때 class를 nav-link-active로 바꿔주기
+//다른게 클릭되면 일반 클래스로 돌아가기
 
   return (
    <ChallengesTab>
      <ChallengesTabUl>
-       <ChallengesTabLi><a href="/" id="MouseEvent" width= "145.479px">코딩테스트 고득점 Kit</a></ChallengesTabLi>
-       <ChallengesTabLi><a href="/" id="MouseEvent" width= "103.562px">SQL 고득점 Kit</a></ChallengesTabLi>
-       <ChallengesTabLi><a href="/" id="MouseEvent" width= "62.667px">모든 문제</a></ChallengesTabLi>
+       <ChallengesTabLi><a  
+                        id="MouseEvent" 
+                        width= "145.479px" 
+                        onClick={()=>{
+                          setBtnClick(!btnClick);
+                          console.log(btnClick);
+                          // btnClick ? console.log('클릭후') : console.log('클릭전');
+                        }}>
+                          
+                          코딩테스트 고득점 Kit</a></ChallengesTabLi>
+       <ChallengesTabLi><a href="/" className="nav-tabs" id="MouseEvent" width= "103.562px">SQL 고득점 Kit</a></ChallengesTabLi>
+       <ChallengesTabLi><a href="/" className="nav-tabs" id="MouseEvent" width= "62.667px">모든 문제</a></ChallengesTabLi>
      </ChallengesTabUl>
    </ChallengesTab>
   );
@@ -34,6 +52,13 @@ const ChallengesTabUl=styled.ul`
   margin-bottom: 0px;
   border:0;
 
+    border-radius: 0;
+    padding: 0.5rem 0;
+    color: #263747;
+
+    padding-top: 0px;
+    padding-bottom: 0px;
+
 `;
 
 const ChallengesTabLi=styled.li`
@@ -42,11 +67,7 @@ const ChallengesTabLi=styled.li`
   line-height: 1.6;
   letter-spacing: -0.009em;
   display: list-item;
-  
-  // padding-left: 0px;
-  // padding-right: 0px;
-  // padding-top: 8px;
-  // padding-bottom: 8px;
+
 
   height: 25.333;
 
@@ -56,11 +77,24 @@ const ChallengesTabLi=styled.li`
   border: 0;
   border-radius: 0;
   padding: 0.5rem 0;
+
+  padding-top: 0px;
+  padding-bottom: 0px;
+  
+  #MouseEvent:visited{
+    // color: #0078FF;
+    // border: 0;
+    // box-shadow: inset 0 -0.1875rem #0078ff;
+    // border-radius: 0;
+    // padding: 0.5rem 0;
+    // background-color: transparent;
+  }
   
   #MouseEvent:hover{
     color:#0078FF;
     border: 0;      
   }
+  
 
   #MouseEvent:active{
     color: #0078FF;
@@ -71,16 +105,26 @@ const ChallengesTabLi=styled.li`
     background-color: transparent;
   }
 
-  & a{
-    text-decoration: none;
-    
-    padding: 0 0.5rem 0 0.5rem;
-    color: #263747;
-    font-weight: 400;
-    padding-right: 0.5rem;
-    padding-left: 0.5rem;
 
+  .nav-tabs{
+    margin-left:1rem;
   }
+
+  & a{
+    border: 0;
+    border-radius: 0;
+    padding: 0.5rem 0;
+    color: #263747;
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: transparent;
+  
+  }
+`;
+
+const ChallengesTabA=styled.a`
+
 `;
 
 export default SecondNavBar;
