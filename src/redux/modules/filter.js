@@ -1,18 +1,13 @@
-const GET_FILTER = 'filter/GET_FILTER';
 const ADD_FILTER = 'filter/ADD_FILTER';
 const REMOVE_FILTER = 'filter/REMOVE_FILTER';
 const CLEAR_FILTER = 'filter/CLEAR_FILTER';
 
-export const getFilter = (filter) => {
-    return { type : GET_FILTER, filter };
+export const addFilter = (filter, category) => {
+    return { type : ADD_FILTER, filter, category };
 };
 
-export const addFilter = (filter) => {
-    return { type : ADD_FILTER, filter };
-};
-
-export const removeFilter = (filter) => {
-    return { type : REMOVE_FILTER, filter };
+export const removeFilter = (filter, category) => {
+    return { type : REMOVE_FILTER, filter, category };
 };
 
 export const clearFilter = () => {
@@ -25,14 +20,14 @@ const initialState = {
 
 export default function reducer(state = initialState, action = {}) {
     switch (action.type) {
-        case 'filter/GET_FILTER':
-            return state;
         case 'filter/ADD_FILTER':
-            const new_list = [...state.list, action.filter];
+            const add_temp = action.filter + '?' + action.category;
+            const new_list = [...state.list, add_temp];
             return {list : new_list};
         case 'filter/REMOVE_FILTER':
+            const remove_temp = action.filter + '?' + action.category;
             const deleted_filter = state.list.filter((val) => {
-                if(val !== action.filter){
+                if(val !== remove_temp){
                     return val;
                 }
             });

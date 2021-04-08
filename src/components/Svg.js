@@ -10,11 +10,11 @@ const Svg = (props) => {
         return <Mysql />;
       case "ORACLE":
         return <Oracle />;
-      case "C++":
+      case "CPP":
         return <CPlusPlus />;
       case "C":
         return <CLang />;
-      case "C#":
+      case "CSHARP":
         return <CSharp />;
       case "GO":
         return <GoLang />;
