@@ -9,18 +9,17 @@ https://programmers.co.kr/learn/challenges
 ### :mage: 맴버구성
 + :lipstick: Frontend - React
   + 정찬엽 (팀장)
-     + 문제 난이도, 언어, 출처 별 필터 개발
-     + 문제 리스트 페이징 개발
-     + Carousel Slider(광고 부분) 개발
-     + DevOps 관리 (Git, AWS S3, Router 53)
+     + 문제 난이도, 언어, 출처 필터 기능 개발 (반응형)
+     + 문제 리스트 페이징 기능 개발 (반응형)
+     + Carousel Slider(광고 부분) 개발 (반응형)
+     + Frontend DevOps 관리 (Git, AWS S3, Router 53)
   + 이지은
-     + 반응형 개발
-     + 상단 NavBar, 하단 Footer 구현
+     + 상단 NavBar 및 하단 Footer 개발 (반응형)
      + 영상 제작
 + :computer: Backend - Spring
   + 박건열
   + 이승민
-  + Source
+  + Source (해당 주소에서 확인 가능합니다.)
     + https://github.com/msmn1729/Programmers-clone
 
 
