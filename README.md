@@ -22,6 +22,9 @@ https://programmers.co.kr/learn/challenges
   + Source (해당 주소에서 확인 가능합니다.)
     + https://github.com/msmn1729/Programmers-clone
 
+### :100: 배운점 + 느낀점
++ API 관리 및 Carousel, Pagination, Filter 기능 개발
+  + https://kodepaper.tistory.com/20
 
 ### :link: 라이브
 http://programmers99.shop/
