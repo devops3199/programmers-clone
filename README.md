@@ -1,4 +1,12 @@
-# :fleur_de_lis: 항해99 클론코딩 
+# :fleur_de_lis: 항해99 클론코딩
+
+<p align='center'>
+    <img src="https://img.shields.io/badge/React-v17.0.2-blue?logo=React"/>
+    <img src="https://img.shields.io/badge/Redux-v4.0.5-purple?logo=Redux"/>
+    <img src="https://img.shields.io/badge/StyledComponents-v5.2.3-pink?logo=styled-components"/>
+    <img src="https://img.shields.io/badge/SpringBoot-v2.4.4-6db33f?logo=Spring"/>
+    <img src="https://img.shields.io/badge/yarn-^1.22.10-yellow?logo=yarn" />
+</p>
 
 ## 프로그래머스 클론코딩
 https://programmers.co.kr/learn/challenges
