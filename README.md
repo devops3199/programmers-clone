@@ -34,8 +34,5 @@ https://programmers.co.kr/learn/challenges
 + API 관리 및 Carousel, Pagination, Filter 기능 개발
   + https://kodepaper.tistory.com/20
 
-### :link: 라이브
-http://programmers99.shop/
-
-### :clapper: 영상
+### :clapper: 결과물
 https://www.youtube.com/watch?v=Ejoa31jhNrc
