@@ -20,8 +20,10 @@ https://programmers.co.kr/learn/challenges
   + 정찬엽 (팀장)
      + 문제 난이도, 언어, 출처 필터 기능 개발
      <img width="700px" alt="필터" src="./src/media/image/filter.gif" />
+
      + 문제 리스트 페이징 기능 개발 (모든 문제 가져온 후 프론트에서 작업)
      <img width="700px" alt="페이징" src="./src/media/image/page.gif" />
+
      ```javascript
      // Reducer
     export default function reducer(state = initialState, action = {}) {
@@ -37,8 +39,10 @@ https://programmers.co.kr/learn/challenges
         }
     };
      ```
+     
      + Carousel Slider 개발 (라이브러리 X)
      <img width="700px" alt="슬라이더" src="./src/media/image/slide.gif" />
+
      + Frontend DevOps 관리 (Git, AWS S3, Router 53)
   + 이지은
      + 상단 NavBar 및 하단 Footer 개발
